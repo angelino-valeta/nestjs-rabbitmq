@@ -3,7 +3,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CheckoutsModule } from './checkouts/checkouts.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Checkout, CheckoutItem, CheckoutProduct } from './checkouts/entities/checkout.entity';
+import {
+  Checkout,
+  CheckoutItem,
+  CheckoutProduct,
+} from './checkouts/entities/checkout.entity';
+import { RabbitmqModule } from './rabbitmq/rabbitmq.module';
+import { PaymentModule } from './payment/payment.module';
 
 //decorator - ES7
 @Module({
@@ -20,6 +26,8 @@ import { Checkout, CheckoutItem, CheckoutProduct } from './checkouts/entities/ch
       logging: true,
     }),
     CheckoutsModule,
+    RabbitmqModule,
+    PaymentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
